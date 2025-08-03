@@ -1,4 +1,4 @@
-package permissionService
+package services
 
 import (
 	"context"
@@ -7,15 +7,15 @@ import (
 	"github.com/brandoyts/permission-based-access-control/internal/core/ports"
 )
 
-type Service struct {
+type PermissionService struct {
 	repository ports.PermissionRepository
 }
 
-func New(repo ports.PermissionRepository) *Service {
-	return &Service{repository: repo}
+func NewPermissionService(repo ports.PermissionRepository) *PermissionService {
+	return &PermissionService{repository: repo}
 }
 
-func (s *Service) CreatePermission(permission string) error {
+func (s *PermissionService) CreatePermission(permission string) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 

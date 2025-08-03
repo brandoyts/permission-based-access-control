@@ -7,7 +7,6 @@ import (
 )
 
 type UserRepository interface {
-	Create(ctx context.Context, in domain.User) error
+	Create(ctx context.Context, in domain.User) (domain.User, error)
 	FindById(ctx context.Context, id string) (domain.User, error)
-	FindOne(ctx context.Context, in domain.User) (domain.User, error)
 }

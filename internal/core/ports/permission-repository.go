@@ -9,5 +9,4 @@ import (
 type PermissionRepository interface {
 	Create(ctx context.Context, in string) error
 	FindOne(ctx context.Context, in string) (domain.Permission, error)
-	Update(ctx context.Context, id string, in string) error
 }

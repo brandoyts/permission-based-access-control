@@ -1,4 +1,4 @@
-package permissionRepository
+package memory
 
 import (
 	"context"
@@ -18,7 +18,7 @@ type PermissionRepository struct {
 	mu    sync.RWMutex
 }
 
-func New() *PermissionRepository {
+func NewPermissionRepository() *PermissionRepository {
 	return &PermissionRepository{
 		store: map[string]domain.Permission{},
 		mu:    sync.RWMutex{},
