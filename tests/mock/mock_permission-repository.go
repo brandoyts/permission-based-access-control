@@ -36,7 +36,7 @@ func (m *MockPermissionRepository) EXPECT() *MockPermissionRepositoryMockRecorde
 }
 
 // Create mocks base method.
-func (m *MockPermissionRepository) Create(ctx context.Context, in string) error {
+func (m *MockPermissionRepository) Create(ctx context.Context, in domain.PermissionType) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Create", ctx, in)
 	ret0, _ := ret[0].(error)
@@ -50,7 +50,7 @@ func (mr *MockPermissionRepositoryMockRecorder) Create(ctx, in interface{}) *gom
 }
 
 // FindOne mocks base method.
-func (m *MockPermissionRepository) FindOne(ctx context.Context, in string) (domain.Permission, error) {
+func (m *MockPermissionRepository) FindOne(ctx context.Context, in domain.PermissionType) (domain.Permission, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindOne", ctx, in)
 	ret0, _ := ret[0].(domain.Permission)

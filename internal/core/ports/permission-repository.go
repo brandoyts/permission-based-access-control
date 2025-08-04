@@ -7,6 +7,6 @@ import (
 )
 
 type PermissionRepository interface {
-	Create(ctx context.Context, in string) error
-	FindOne(ctx context.Context, in string) (domain.Permission, error)
+	Create(ctx context.Context, in domain.PermissionType) error
+	FindOne(ctx context.Context, in domain.PermissionType) (domain.Permission, error)
 }

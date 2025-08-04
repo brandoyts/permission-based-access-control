@@ -14,18 +14,18 @@ const (
 )
 
 type PermissionRepository struct {
-	store map[string]domain.Permission
+	store map[domain.PermissionType]domain.Permission
 	mu    sync.RWMutex
 }
 
 func NewPermissionRepository() *PermissionRepository {
 	return &PermissionRepository{
-		store: map[string]domain.Permission{},
+		store: map[domain.PermissionType]domain.Permission{},
 		mu:    sync.RWMutex{},
 	}
 }
 
-func (pr *PermissionRepository) Create(ctx context.Context, in string) error {
+func (pr *PermissionRepository) Create(ctx context.Context, in domain.PermissionType) error {
 	pr.mu.Lock()
 	defer pr.mu.Unlock()
 
