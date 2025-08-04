@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/brandoyts/permission-based-access-control/internal/core/domain"
 	"github.com/brandoyts/permission-based-access-control/internal/core/ports"
@@ -20,11 +19,9 @@ func NewUserHandler(service ports.UserService) *UserHandler {
 }
 
 func (uh *UserHandler) CreateUser(c *fiber.Ctx) error {
-
 	body := new(domain.User)
 
 	err := c.BodyParser(body)
-	fmt.Println(err, body)
 	if err != nil {
 		return err
 	}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/brandoyts/permission-based-access-control/internal/adapters/handlers"
+	"github.com/brandoyts/permission-based-access-control/internal/adapters/middlewares"
 	"github.com/brandoyts/permission-based-access-control/internal/adapters/persistence/memory"
 	"github.com/brandoyts/permission-based-access-control/internal/core/services"
 	"github.com/gofiber/fiber/v2"
@@ -20,6 +21,10 @@ func main() {
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("success")
+	})
+
+	app.Get("assistant/", middlewares.Updater(), func(c *fiber.Ctx) error {
+		return c.SendString("protected for assistant")
 	})
 
 	userRouter := app.Group("users")
