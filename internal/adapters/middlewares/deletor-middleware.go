@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func Updater() fiber.Handler {
+func Deletor() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		permissions := c.Locals("permissions")
 
@@ -18,7 +18,7 @@ func Updater() fiber.Handler {
 		}
 
 		for _, permission := range permissions.([]interface{}) {
-			if domain.ToPermissionType(permission) == domain.PermissionUpdate {
+			if domain.ToPermissionType(permission) == domain.PermissionDelete {
 				return c.Next()
 			}
 		}

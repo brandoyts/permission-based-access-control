@@ -51,3 +51,16 @@ func (ur *UserRepository) FindById(ctx context.Context, id string) (domain.User,
 
 	return user, nil
 }
+
+func (ur *UserRepository) FindByEmail(ctx context.Context, email string) (domain.User, error) {
+	ur.mu.Lock()
+	defer ur.mu.Unlock()
+
+	for _, user := range ur.store {
+		if user.Email == email {
+			return user, nil
+		}
+	}
+
+	return domain.User{}, nil
+}

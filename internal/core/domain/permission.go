@@ -1,6 +1,8 @@
 package domain
 
-import "time"
+import (
+	"time"
+)
 
 type PermissionType string
 
@@ -15,4 +17,9 @@ type Permission struct {
 	Type      PermissionType
 	CreatedAt time.Time
 	UpdatedAt time.Time
+}
+
+func ToPermissionType(permission interface{}) PermissionType {
+	val := permission.(string)
+	return PermissionType(val)
 }

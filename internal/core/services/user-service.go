@@ -24,3 +24,7 @@ func (us *UserService) CreateUser(ctx context.Context, in domain.User) (domain.U
 func (us *UserService) FindUserById(ctx context.Context, id string) (domain.User, error) {
 	return us.repository.FindById(ctx, id)
 }
+
+func (us *UserService) FindUserByEmail(ctx context.Context, email string) (domain.User, error) {
+	return us.repository.FindByEmail(ctx, email)
+}

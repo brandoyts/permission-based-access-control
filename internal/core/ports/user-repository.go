@@ -9,4 +9,5 @@ import (
 type UserRepository interface {
 	Create(ctx context.Context, in domain.User) (domain.User, error)
 	FindById(ctx context.Context, id string) (domain.User, error)
+	FindByEmail(ctx context.Context, email string) (domain.User, error)
 }
